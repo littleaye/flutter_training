@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -70,7 +71,7 @@ class MyHomePage extends StatelessWidget {
                       for (int index = 0; index < state.pizzas.length; index++)
                         Positioned(
                             left: Random().nextInt(250).toDouble(),
-                            right: Random().nextInt(400).toDouble(),
+                            right: Random().nextInt(250).toDouble(),
                             top: Random().nextInt(250).toDouble(),
                             bottom: Random().nextInt(250).toDouble(),
                             child: SizedBox(
