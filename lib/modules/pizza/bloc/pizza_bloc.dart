@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../models/pizza_model.dart';
+import '../../../models/pizza_model.dart';
 
 part 'pizza_event.dart';
 part 'pizza_state.dart';
