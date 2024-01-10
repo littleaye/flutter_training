@@ -1,12 +1,13 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'models/pizza_model.dart';
+import 'package:flutter_training/routes/routes.dart';
+import 'package:go_router/go_router.dart';
 import 'modules/pizza/bloc/pizza_bloc.dart';
-import 'modules/pizza/pizza_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp.router(
+    routerConfig: router,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +26,37 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const PizzaCounter(),
+          home: const HomePage(),
         ));
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        title: const Text('The Home Page'),
+      ),
+      body: Center(
+          child: FilledButton(
+              onPressed: () {
+                context.go('/pizza');
+              },
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Go to Pizza Counter'),
+                  SizedBox(width: 5),
+                  Icon(Icons.local_pizza)
+                ],
+              ))),
+    );
   }
 }
