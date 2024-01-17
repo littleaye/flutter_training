@@ -1,7 +1,13 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_training/screens/auth/signin_screen.dart';
+import 'package:flutter_training/screens/auth/signup_screen.dart';
+
+import '../../blocs/authentication_bloc/authentication_bloc.dart';
+import '../../blocs/signin_bloc/signin_bloc.dart';
+import '../../blocs/signup_bloc/signup_bloc.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -101,7 +107,22 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                           height: 500,
                           child: TabBarView(
                             controller: tabController,
-                            children: [const SignInScreen(), Container()],
+                            children: [
+                              BlocProvider<SigninBloc>(
+                                create: (context) => SigninBloc(
+                                    userRepository: context
+                                        .read<AuthenticationBloc>()
+                                        .userRepository),
+                                child: const SignInScreen(),
+                              ),
+                              BlocProvider<SignupBloc>(
+                                create: (context) => SignupBloc(
+                                    userRepository: context
+                                        .read<AuthenticationBloc>()
+                                        .userRepository),
+                                child: const SignUpScreen(),
+                              ),
+                            ],
                           ))
                     ],
                   ),
