@@ -26,14 +26,13 @@ class LoginScreen extends StatelessWidget {
               _showSnackBar(context, formStatus.exception.toString());
             }
           },
-          child: Center(
+          child: const Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: EdgeInsets.symmetric(horizontal: 30),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.asset("assets/yoga-girl.png"),
-                  const FormWidget(),
+                  FormWidget(),
                 ],
               ),
             ),
