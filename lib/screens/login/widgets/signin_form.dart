@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_training/screens/login/widgets/textfield.dart';
+import 'package:go_router/go_router.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -86,34 +87,33 @@ class _SignInFormState extends State<SignInForm> {
             const SizedBox(
               height: 20,
             ),
-             SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: TextButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          
-                        }
-                      },
-                      style: TextButton.styleFrom(
-                        elevation: 3.0,
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(60)),
-                      ),
-                      child: const Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 25, vertical: 15),
-                          child: Text(
-                            'Sign In',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600),
-                          )),
-                    ),
-                  )
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: TextButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    context.go('/home');
+                  }
+                },
+                style: TextButton.styleFrom(
+                  elevation: 3.0,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(60)),
+                ),
+                child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                    child: Text(
+                      'Sign In',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600),
+                    )),
+              ),
+            )
           ],
         ));
   }
